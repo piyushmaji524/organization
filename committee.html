@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Committee — SYDC</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<div id="alert-banner"></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <div class="nav-logo-fallback" id="nav-logo-fallback">স</div>
+      <img id="nav-logo-img" class="nav-logo-img" src="" alt="Logo" style="display:none">
+      <div class="nav-brand-text">
+        <div class="nav-name site-name">Sarak Youth Development Council</div>
+        <div class="nav-sub site-tagline"></div>
+      </div>
+    </a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="/"               data-i18n="nav_home">Home</a></li>
+      <li><a href="/about.html"     data-i18n="nav_about">About</a></li>
+      <li><a href="/committee.html" class="active" data-i18n="nav_committee">Committee</a></li>
+      <li><a href="/events.html"    data-i18n="nav_events">Events</a></li>
+      <li><a href="/news.html"      data-i18n="nav_news">News</a></li>
+      <li><a href="/blog.html"      data-i18n="nav_blog">Blog</a></li>
+      <li><a href="/gallery.html"   data-i18n="nav_gallery">Gallery</a></li>
+      <li><a href="/donate.html"    data-i18n="nav_donate">Donate</a></li>
+      <li><a href="/contact.html"   data-i18n="nav_contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">HI</button>
+        <button class="lang-btn" data-lang="bn">BN</button>
+      </div>
+      <a href="/join.html" class="btn nav-cta" data-i18n="nav_join">Join Us</a>
+    </div>
+    <button class="nav-hamburger" id="nav-toggle" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1 data-i18n="nav_committee">Committee</h1>
+  <p>Meet the people driving the Sarak Youth Development Council.</p>
+  <div class="breadcrumb"><a href="/" data-i18n="nav_home">Home</a> <span>/</span> <span data-i18n="nav_committee">Committee</span></div>
+</div>
+
+<!-- Executive Committee -->
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Leadership</span>
+      <h2 class="section-title" data-i18n="committee_executive">Executive Committee</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="card-grid" id="executive-grid">
+      <div class="loading-block"><div class="spinner"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Members -->
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Members</span>
+      <h2 class="section-title" data-i18n="committee_core">Core Members</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="card-grid" id="core-grid">
+      <div class="loading-block"><div class="spinner"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Advisory Members -->
+<section class="section bg-cream" id="advisory-section" style="display:none">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Advisors</span>
+      <h2 class="section-title" data-i18n="committee_advisory">Advisory Members</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="card-grid" id="advisory-grid"></div>
+  </div>
+</section>
+
+<!-- General Members -->
+<section class="section" style="background:var(--white);display:none" id="general-members-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Our Members</span>
+      <h2 class="section-title">General Members</h2>
+      <div class="divider"></div>
+    </div>
+    <div id="general-members-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:24px">
+      <div class="loading-block"><div class="spinner"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Member Profile Modal -->
+<div class="modal-backdrop" id="member-modal">
+  <div class="modal" style="max-width:520px;padding:0;overflow:hidden">
+    <div id="modal-inner"></div>
+  </div>
+</div>
+
+<footer id="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><p class="footer-founding" id="footer-founding"></p><div class="footer-social" id="footer-social"></div></div>
+      <div class="footer-col"><h4 data-i18n="footer_quicklinks">Quick Links</h4>
+        <a href="/" data-i18n="nav_home">Home</a><a href="/about.html" data-i18n="nav_about">About</a>
+        <a href="/events.html" data-i18n="nav_events">Events</a><a href="/contact.html" data-i18n="nav_contact">Contact</a>
+      </div>
+      <div class="footer-col"><h4>More</h4>
+        <a href="/gallery.html" data-i18n="nav_gallery">Gallery</a><a href="/join.html" data-i18n="nav_join">Join</a>
+        <a href="/donate.html" data-i18n="nav_donate">Donate</a>
+      </div>
+      <div class="footer-col"><h4 data-i18n="footer_address">Contact</h4>
+        <p id="footer-address" style="font-size:14px;color:rgba(255,255,255,.5)"></p>
+        <p id="footer-email" style="font-size:14px;color:var(--gold);margin-top:6px"></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="footer-year"></span> <span class="site-name">SYDC</span>. <span data-i18n="footer_rights">All Rights Reserved.</span></span>
+    <span><span data-i18n="footer_powered">Powered by</span> <a href="#">Gunayatan</a></span>
+  </div>
+</footer>
+
+<div class="bottom-tab-bar"><div class="tabs">
+  <a href="/" class="bottom-tab"><span class="tab-icon">🏠</span><span data-i18n="nav_home">Home</span></a>
+  <a href="/events.html" class="bottom-tab"><span class="tab-icon">📅</span><span data-i18n="nav_events">Events</span></a>
+  <a href="/news.html" class="bottom-tab"><span class="tab-icon">📰</span><span data-i18n="nav_news">News</span></a>
+  <a href="/join.html" class="bottom-tab"><span class="tab-icon">✨</span><span data-i18n="nav_join">Join</span></a>
+  <a href="/contact.html" class="bottom-tab"><span class="tab-icon">📞</span><span data-i18n="nav_contact">Contact</span></a>
+</div></div>
+
+<script src="/assets/js/api.js"></script>
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+function buildMemberCard(m) {
+  const name = I18N.field(m, 'name');
+  const desg = I18N.field(m, 'designation');
+  const bio  = I18N.field(m, 'bio');
+  const photo = m.photo
+    ? `<img src="/${m.photo}" alt="${name}" class="member-photo">`
+    : `<div class="member-photo-fallback">👤</div>`;
+  const socials = [
+    m.facebook_url  ? `<a href="${m.facebook_url}"  target="_blank" class="member-social-link">📘</a>` : '',
+    m.instagram_url ? `<a href="${m.instagram_url}" target="_blank" class="member-social-link">📸</a>` : '',
+    m.linkedin_url  ? `<a href="${m.linkedin_url}"  target="_blank" class="member-social-link">🔗</a>` : '',
+    m.whatsapp      ? `<a href="https://wa.me/${m.whatsapp.replace(/\D/,'')}" target="_blank" class="member-social-link">💬</a>` : '',
+  ].join('');
+  return `
+  <div class="card member-card reveal" onclick="showMemberModal(${m.id})">
+    ${photo}
+    <div class="member-name">${name}</div>
+    <div class="member-desg">${desg}</div>
+    <div class="member-bio">${bio || ''}</div>
+    ${socials ? `<div class="member-socials">${socials}</div>` : ''}
+    <span class="btn btn-maroon btn-sm" data-i18n="committee_view_profile">View Profile</span>
+  </div>`;
+}
+
+let _membersCache = null;
+let _generalMembersCache = [];
+
+function buildGeneralMemberCard(m) {
+  const isBadged = m.badge_name && m.badge_name.trim();
+  const photo = m.photo
+    ? `<img src="/${m.photo}" alt="${m.full_name}" style="width:90px;height:90px;object-fit:cover;border-radius:50%;border:3px solid ${isBadged ? '#C9A84C' : 'var(--border)'};display:block;margin:0 auto 12px">`
+    : `<div style="width:90px;height:90px;background:var(--gold-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 12px;border:3px solid ${isBadged ? '#C9A84C' : 'var(--border)'}">👤</div>`;
+  const badgeTag = isBadged
+    ? `<div style="background:#FDF3DC;color:#7B4F00;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;border:1px solid #C9A84C;margin-bottom:8px">🏅 ${m.badge_name}</div>` : '';
+  const memberId = m.member_id
+    ? `<div style="font-size:11px;color:var(--text-muted);letter-spacing:.5px;font-family:monospace;margin-bottom:8px">${m.member_id}</div>` : '';
+  const LABELS = {father_name:"Father's Name",age:'Age',phone:'Phone',email:'Email',education:'Education',occupation:'Occupation',address:'Address',referral:'Referred By'};
+  const extras = Object.entries(LABELS)
+    .filter(([k]) => m[k])
+    .map(([k,l]) => `<div style="font-size:12px;color:var(--text-muted);line-height:1.6"><strong>${l}:</strong> ${m[k]}</div>`)
+    .join('');
+  return `
+  <div class="card reveal" style="text-align:center;padding:24px 16px;${isBadged ? 'border:2px solid #C9A84C;box-shadow:0 0 0 4px rgba(201,168,76,.12);' : ''}">
+    ${photo}
+    ${badgeTag}
+    <div style="font-size:15px;font-weight:700;color:var(--maroon);margin-bottom:4px">${m.full_name}</div>
+    ${memberId}
+    ${extras ? `<div style="margin-top:8px;text-align:left;border-top:1px solid var(--border);padding-top:8px">${extras}</div>` : ''}
+  </div>`;
+}
+
+async function loadGeneralMembers() {
+  const res = await API.generalMembers();
+  if (!res.success || !res.data.length) return;
+  _generalMembersCache = res.data;
+  const grid = document.getElementById('general-members-grid');
+  grid.innerHTML = res.data.map(buildGeneralMemberCard).join('');
+  document.getElementById('general-members-section').style.display = 'block';
+  initScrollReveal();
+}
+
+async function loadCommittee() {
+  const res = await API.members();
+  if (!res.success) return;
+  _membersCache = res.data;
+
+  const cats = ['executive','core','advisory'];
+  cats.forEach(cat => {
+    const grid = document.getElementById(cat + '-grid');
+    if (!grid) return;
+    const members = (res.data[cat] || []).filter(m => m.is_active);
+    if (!members.length) {
+      if (cat === 'advisory') return;
+      grid.innerHTML = '<p style="color:var(--text-muted);text-align:center">No members in this category yet.</p>';
+      return;
+    }
+    grid.innerHTML = members.map(buildMemberCard).join('');
+    if (cat === 'advisory') document.getElementById('advisory-section').style.display = 'block';
+  });
+  initScrollReveal();
+}
+
+function showMemberModal(id) {
+  const all = [...(_membersCache?.executive||[]),...(_membersCache?.core||[]),...(_membersCache?.advisory||[])];
+  const m = all.find(x => x.id === id);
+  if (!m) return;
+  const name = I18N.field(m, 'name');
+  const desg = I18N.field(m, 'designation');
+  const bio  = I18N.field(m, 'bio') || '';
+  const ach  = I18N.field(m, 'achievements') || '';
+  const photo = m.photo
+    ? `<img src="/${m.photo}" alt="${name}" style="width:100%;height:240px;object-fit:cover">`
+    : `<div style="height:160px;background:linear-gradient(135deg,var(--dark),var(--maroon-dk));display:flex;align-items:center;justify-content:center;font-size:80px">👤</div>`;
+
+  document.getElementById('modal-inner').innerHTML = `
+    ${photo}
+    <div style="padding:24px">
+      <h2 style="color:var(--maroon);font-size:22px;margin-bottom:4px">${name}</h2>
+      <p style="color:var(--gold);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px">${desg}</p>
+      ${bio ? `<p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-bottom:12px">${bio}</p>` : ''}
+      ${ach ? `<div style="background:var(--gold-pale);padding:12px;border-radius:8px;font-size:14px"><strong>🏆 ${I18N.t('member_achievements')}:</strong><br>${ach}</div>` : ''}
+      <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+        ${m.email ? `<a href="mailto:${m.email}" class="btn btn-maroon btn-sm">✉️ Email</a>` : ''}
+        ${m.phone ? `<a href="tel:${m.phone}" class="btn btn-maroon btn-sm">📞 Call</a>` : ''}
+        ${m.whatsapp ? `<a href="https://wa.me/${m.whatsapp.replace(/\D/,'')}" target="_blank" class="btn btn-maroon btn-sm">💬 WhatsApp</a>` : ''}
+      </div>
+      <button onclick="closeModal('member-modal')" class="btn btn-outline" style="margin-top:10px;color:var(--maroon);border-color:var(--border)">Close</button>
+    </div>`;
+  openModal('member-modal');
+}
+
+async function initPage() {
+  await Promise.all([loadCommittee(), loadGeneralMembers()]);
+  const s = await getSettings();
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+  if (s.logo_path) {
+    document.getElementById('nav-logo-img').src = '/' + s.logo_path;
+    document.getElementById('nav-logo-img').style.display = 'block';
+    document.getElementById('nav-logo-fallback').style.display = 'none';
+  }
+  if (s.founding_year) document.getElementById('footer-founding').textContent = 'Est. ' + s.founding_year;
+  const lang = I18N.getLang();
+  if (s.contact_email) document.getElementById('footer-email').textContent = '✉ ' + s.contact_email;
+  const addr = s[`contact_address_${lang}`] || s.contact_address_en || '';
+  if (addr) document.getElementById('footer-address').textContent = addr;
+  const socials = [{key:'facebook_url',icon:'📘'},{key:'instagram_url',icon:'📸'},{key:'youtube_url',icon:'▶️'},{key:'whatsapp_link',icon:'💬'}];
+  const sc = document.getElementById('footer-social');
+  socials.forEach(({key,icon}) => { if(s[key]) sc.innerHTML += `<a href="${s[key]}" target="_blank">${icon}</a>`; });
+}
+
+document.addEventListener('DOMContentLoaded', initPage);
+document.addEventListener('langchange', () => {
+  if (_membersCache) {
+    ['executive','core','advisory'].forEach(cat => {
+      const grid = document.getElementById(cat+'-grid');
+      if (grid && _membersCache[cat]?.length) grid.innerHTML = _membersCache[cat].filter(m=>m.is_active).map(buildMemberCard).join('');
+    });
+  }
+  initScrollReveal();
+});
+
+function openModal(id) { document.getElementById(id)?.classList.add('open'); }
+function closeModal(id) { document.getElementById(id)?.classList.remove('open'); }
+document.querySelectorAll && document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.modal-backdrop').forEach(b => b.addEventListener('click', e => { if(e.target===b) b.classList.remove('open'); }));
+});
+</script>
+</body>
+</html>

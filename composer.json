@@ -1,0 +1,16 @@
+{
+  "name": "gunayatan/sarak-youth",
+  "description": "Sarak Youth Development Council — Full-Stack Website",
+  "type": "project",
+  "require": {
+    "phpmailer/phpmailer": "^6.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "SarakYouth\\": "src/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}

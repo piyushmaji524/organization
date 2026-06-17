@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYDC</title>
+<meta name="description" content="Sarak Youth Development Council — Serving the community under Gunayatan.">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+
+<!-- Alert Banner -->
+<div id="alert-banner"></div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <div class="nav-logo-fallback" id="nav-logo-fallback">স</div>
+      <img id="nav-logo-img" class="nav-logo-img" src="" alt="Logo" style="display:none">
+      <div class="nav-brand-text">
+        <div class="nav-name site-name">Sarak Youth Development Council</div>
+        <div class="nav-sub site-tagline"></div>
+      </div>
+    </a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="/"            class="active" data-i18n="nav_home">Home</a></li>
+      <li><a href="/about.html"              data-i18n="nav_about">About</a></li>
+      <li><a href="/committee.html"          data-i18n="nav_committee">Committee</a></li>
+      <li><a href="/events.html"             data-i18n="nav_events">Events</a></li>
+      <li><a href="/news.html"               data-i18n="nav_news">News</a></li>
+      <li><a href="/blog.html"               data-i18n="nav_blog">Blog</a></li>
+      <li><a href="/gallery.html"            data-i18n="nav_gallery">Gallery</a></li>
+      <li><a href="/donate.html"             data-i18n="nav_donate">Donate</a></li>
+      <li><a href="/contact.html"            data-i18n="nav_contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">HI</button>
+        <button class="lang-btn" data-lang="bn">BN</button>
+      </div>
+      <a href="/join.html" class="btn nav-cta" data-i18n="nav_join">Join Us</a>
+    </div>
+    <button class="nav-hamburger" id="nav-toggle" aria-expanded="false" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-logo-fallback" id="hero-logo-fallback">⚜</div>
+    <img id="hero-logo-img" class="hero-logo" src="" alt="Logo" style="display:none">
+    <span class="hero-label">Sarak Youth Development Council</span>
+    <h1 class="hero-title"><span class="site-name">Sarak Youth Development Council</span></h1>
+    <p class="hero-tagline site-tagline"></p>
+    <p class="hero-motto site-motto"></p>
+    <div class="hero-actions">
+      <a href="/events.html" class="btn btn-primary" data-i18n="hero_cta_events">View Events</a>
+      <a href="/join.html"   class="btn btn-outline"  data-i18n="hero_cta_join">Join the Council</a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-num"><span id="stat-members" data-counter="50">50</span><span class="stat-plus">+</span></span>
+        <div class="stat-label" data-i18n="stat_members">Active Members</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num"><span id="stat-events" data-counter="12">12</span><span class="stat-plus">+</span></span>
+        <div class="stat-label" data-i18n="stat_events">Events Conducted</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num"><span id="stat-beneficiaries" data-counter="500">500</span><span class="stat-plus">+</span></span>
+        <div class="stat-label" data-i18n="stat_beneficiaries">Lives Impacted</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Events -->
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Events</span>
+      <h2 class="section-title" data-i18n="section_upcoming_events">Upcoming Events</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="card-grid" id="home-events">
+      <div class="loading-block"><div class="spinner"></div></div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a href="/events.html" class="btn btn-maroon" data-i18n="event_upcoming">View All Events</a>
+    </div>
+  </div>
+</section>
+
+<!-- Latest News -->
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">News</span>
+      <h2 class="section-title" data-i18n="section_latest_news">Latest News & Announcements</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="card-grid" id="home-news">
+      <div class="loading-block"><div class="spinner"></div></div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a href="/news.html" class="btn btn-maroon">All News →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Donate CTA -->
+<section class="section donate-section">
+  <div class="container" style="text-align:center">
+    <span class="section-label">Sahyog</span>
+    <h2 class="section-title" style="color:var(--white)" data-i18n="section_donate">Support Our Mission</h2>
+    <p style="color:rgba(255,255,255,.65);font-size:16px;max-width:550px;margin:0 auto 32px" data-i18n="donate_title">Your contribution helps us serve the community.</p>
+    <a href="/donate.html" class="btn btn-primary">💛 Contribute Now</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="footer-founding" id="footer-founding"></p>
+        <p id="footer-tagline"></p>
+        <div class="footer-social" id="footer-social"></div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_quicklinks">Quick Links</h4>
+        <a href="/about.html"     data-i18n="nav_about">About</a>
+        <a href="/committee.html" data-i18n="nav_committee">Committee</a>
+        <a href="/events.html"    data-i18n="nav_events">Events</a>
+        <a href="/news.html"      data-i18n="nav_news">News</a>
+      </div>
+      <div class="footer-col">
+        <h4>More</h4>
+        <a href="/gallery.html"   data-i18n="nav_gallery">Gallery</a>
+        <a href="/join.html"      data-i18n="nav_join">Join Us</a>
+        <a href="/donate.html"    data-i18n="nav_donate">Donate</a>
+        <a href="/contact.html"   data-i18n="nav_contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_address">Contact</h4>
+        <p id="footer-address" style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.7"></p>
+        <p id="footer-email"   style="font-size:14px;color:var(--gold);margin-top:6px"></p>
+        <p id="footer-phone"   style="font-size:14px;color:rgba(255,255,255,.6);margin-top:4px"></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="footer-year"></span> <span class="site-name">Sarak Youth Development Council</span>. <span data-i18n="footer_rights">All Rights Reserved.</span></span>
+    <span><span data-i18n="footer_powered">Powered by</span> <a href="#">Gunayatan</a></span>
+  </div>
+</footer>
+
+<!-- Bottom tab bar (mobile) -->
+<div class="bottom-tab-bar">
+  <div class="tabs">
+    <a href="/"             class="bottom-tab active">  <span class="tab-icon">🏠</span><span data-i18n="nav_home">Home</span></a>
+    <a href="/events.html"  class="bottom-tab">         <span class="tab-icon">📅</span><span data-i18n="nav_events">Events</span></a>
+    <a href="/news.html"    class="bottom-tab">         <span class="tab-icon">📰</span><span data-i18n="nav_news">News</span></a>
+    <a href="/join.html"    class="bottom-tab">         <span class="tab-icon">✨</span><span data-i18n="nav_join">Join</span></a>
+    <a href="/contact.html" class="bottom-tab">         <span class="tab-icon">📞</span><span data-i18n="nav_contact">Contact</span></a>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox"><button class="lb-close">✕</button><img class="lb-img" src="" alt=""><div class="lb-caption"></div></div>
+
+<script src="/assets/js/api.js"></script>
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/pages/home.js"></script>
+<script>
+// Footer dynamic data
+document.addEventListener('DOMContentLoaded', async () => {
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+  const s = await getSettings();
+  const lang = I18N.getLang();
+
+  if (s.logo_path) {
+    document.getElementById('nav-logo-img').src = '/' + s.logo_path;
+    document.getElementById('nav-logo-img').style.display = 'block';
+    document.getElementById('nav-logo-fallback').style.display = 'none';
+    document.getElementById('hero-logo-img').src = '/' + s.logo_path;
+    document.getElementById('hero-logo-img').style.display = 'block';
+    document.getElementById('hero-logo-fallback').style.display = 'none';
+  }
+  if (s.founding_year) document.getElementById('footer-founding').textContent = 'Est. ' + s.founding_year;
+  if (s.contact_email) document.getElementById('footer-email').textContent   = '✉ ' + s.contact_email;
+  if (s.contact_phone) document.getElementById('footer-phone').textContent   = '📞 ' + s.contact_phone;
+  const addr = s[`contact_address_${lang}`] || s.contact_address_en || '';
+  if (addr) document.getElementById('footer-address').textContent = addr;
+
+  // Social links
+  const socials = [
+    { key:'facebook_url',  icon:'📘', label:'Facebook' },
+    { key:'instagram_url', icon:'📸', label:'Instagram' },
+    { key:'youtube_url',   icon:'▶️',  label:'YouTube' },
+    { key:'whatsapp_link', icon:'💬', label:'WhatsApp' },
+    { key:'twitter_url',   icon:'🐦', label:'Twitter' },
+  ];
+  const sc = document.getElementById('footer-social');
+  socials.forEach(({ key, icon, label }) => {
+    if (s[key]) sc.innerHTML += `<a href="${s[key]}" target="_blank" rel="noopener" title="${label}">${icon}</a>`;
+  });
+});
+
+document.addEventListener('langchange', async () => {
+  const s = await getSettings();
+  const lang = I18N.getLang();
+  const addr = s[`contact_address_${lang}`] || s.contact_address_en || '';
+  if (addr) document.getElementById('footer-address').textContent = addr;
+});
+</script>
+</body>
+</html>

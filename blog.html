@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — SYDC</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+<style>
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px}
+.blog-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.13)}
+.blog-thumb{width:100%;height:200px;object-fit:cover;display:block;background:var(--gray-100)}
+.blog-thumb-placeholder{height:200px;background:linear-gradient(135deg,var(--maroon-dk),var(--maroon));display:flex;align-items:center;justify-content:center;font-size:48px}
+.blog-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.blog-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.blog-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 10px;border-radius:20px}
+.blog-date{font-size:12px;color:var(--gray-400)}
+.blog-author{font-size:12px;color:var(--gray-400)}
+.blog-title{font-size:17px;font-weight:700;color:var(--maroon);margin-bottom:8px;line-height:1.4}
+.blog-excerpt{font-size:14px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;flex:1}
+.blog-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.blog-tag{font-size:11px;color:var(--gray-500);background:var(--gray-100);padding:2px 8px;border-radius:12px}
+.blog-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--gray-100)}
+.blog-views{font-size:12px;color:var(--gray-400)}
+.pagination{display:flex;justify-content:center;gap:6px;margin-top:36px;flex-wrap:wrap}
+.page-btn{padding:8px 14px;border:1px solid var(--gray-300);border-radius:8px;background:var(--white);cursor:pointer;font-size:14px;color:var(--text)}
+.page-btn.active{background:var(--maroon);color:var(--white);border-color:var(--maroon)}
+.page-btn:hover:not(.active){background:var(--gray-50)}
+.filter-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.chip{padding:6px 14px;border-radius:20px;border:1px solid var(--gray-300);background:var(--white);cursor:pointer;font-size:13px;font-weight:500;transition:all .15s}
+.chip.active{background:var(--maroon);color:var(--white);border-color:var(--maroon)}
+@media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="alert-banner"></div>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <div class="nav-logo-fallback" id="nav-logo-fallback">স</div>
+      <img id="nav-logo-img" class="nav-logo-img" src="" alt="Logo" style="display:none">
+      <div class="nav-brand-text"><div class="nav-name site-name">SYDC</div><div class="nav-sub site-tagline"></div></div>
+    </a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="/" data-i18n="nav_home">Home</a></li>
+      <li><a href="/about.html" data-i18n="nav_about">About</a></li>
+      <li><a href="/committee.html" data-i18n="nav_committee">Committee</a></li>
+      <li><a href="/events.html" data-i18n="nav_events">Events</a></li>
+      <li><a href="/news.html" data-i18n="nav_news">News</a></li>
+      <li><a href="/blog.html" class="active">Blog</a></li>
+      <li><a href="/gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+      <li><a href="/donate.html" data-i18n="nav_donate">Donate</a></li>
+      <li><a href="/contact.html" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">HI</button>
+        <button class="lang-btn" data-lang="bn">BN</button>
+      </div>
+      <a href="/join.html" class="btn nav-cta" data-i18n="nav_join">Join Us</a>
+    </div>
+    <button class="nav-hamburger" id="nav-toggle" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Blog</h1>
+  <p>Stories, updates and insights from the Sarak Youth Development Council</p>
+  <div class="breadcrumb"><a href="/" data-i18n="nav_home">Home</a> <span>/</span> <span>Blog</span></div>
+</div>
+
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <!-- Category filter chips -->
+    <div class="filter-chips" id="cat-chips">
+      <span class="chip active" data-cat="">All Posts</span>
+    </div>
+    <!-- Search -->
+    <div style="margin-bottom:24px">
+      <input type="search" id="blog-search" placeholder="🔍 Search blog posts…"
+        style="width:100%;max-width:420px;padding:10px 14px;border:1px solid var(--gray-300);border-radius:10px;font-size:14px">
+    </div>
+    <!-- Blog grid -->
+    <div class="blog-grid" id="blog-grid">
+      <div class="loading-block"><div class="spinner"></div></div>
+    </div>
+    <!-- Pagination -->
+    <div class="pagination" id="blog-pagination"></div>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <div class="container"><div class="footer-grid">
+    <div class="footer-brand"><p class="footer-founding" id="footer-founding"></p><div class="footer-social" id="footer-social"></div></div>
+    <div class="footer-col"><h4 data-i18n="footer_quicklinks">Quick Links</h4>
+      <a href="/" data-i18n="nav_home">Home</a><a href="/about.html" data-i18n="nav_about">About</a>
+      <a href="/events.html" data-i18n="nav_events">Events</a><a href="/contact.html" data-i18n="nav_contact">Contact</a>
+    </div>
+    <div class="footer-col"><h4>More</h4>
+      <a href="/blog.html">Blog</a><a href="/gallery.html" data-i18n="nav_gallery">Gallery</a>
+      <a href="/join.html" data-i18n="nav_join">Join</a><a href="/donate.html" data-i18n="nav_donate">Donate</a>
+    </div>
+    <div class="footer-col"><h4 data-i18n="footer_address">Contact</h4>
+      <p id="footer-address" style="font-size:14px;color:rgba(255,255,255,.5)"></p>
+      <p id="footer-email" style="font-size:14px;color:var(--gold);margin-top:6px"></p>
+    </div>
+  </div></div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="footer-year"></span> <span class="site-name">SYDC</span>. <span data-i18n="footer_rights">All Rights Reserved.</span></span>
+    <span><span data-i18n="footer_powered">Powered by</span> <a href="#">Gunayatan</a></span>
+  </div>
+</footer>
+
+<div class="bottom-tab-bar"><div class="tabs">
+  <a href="/" class="bottom-tab"><span class="tab-icon">🏠</span><span data-i18n="nav_home">Home</span></a>
+  <a href="/events.html" class="bottom-tab"><span class="tab-icon">📅</span><span data-i18n="nav_events">Events</span></a>
+  <a href="/blog.html" class="bottom-tab active"><span class="tab-icon">✍️</span><span>Blog</span></a>
+  <a href="/join.html" class="bottom-tab"><span class="tab-icon">✨</span><span data-i18n="nav_join">Join</span></a>
+  <a href="/contact.html" class="bottom-tab"><span class="tab-icon">📞</span><span data-i18n="nav_contact">Contact</span></a>
+</div></div>
+
+<script src="/assets/js/api.js"></script>
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+let _currentPage = 1;
+let _currentCat  = '';
+let _searchTimer = null;
+
+function truncateWords(html, limit) {
+  const text = html.replace(/<[^>]+>/g, '');
+  const words = text.trim().split(/\s+/);
+  return words.slice(0, limit).join(' ') + (words.length > limit ? '…' : '');
+}
+
+function buildBlogCard(p) {
+  const lang    = I18N.getLang();
+  const title   = p['title_'+lang] || p.title_en || '';
+  const excerpt = p['excerpt_'+lang] || p.excerpt_en || '';
+  const display = excerpt || truncateWords(p['content_'+lang] || p.content_en || '', 80);
+  const thumb   = p.thumbnail
+    ? `<img src="/${p.thumbnail}" class="blog-thumb" alt="${title}">`
+    : `<div class="blog-thumb-placeholder">✍️</div>`;
+  const catBadge = p.category_name
+    ? `<span class="blog-cat" style="background:${p.category_color||'#C9A84C'}22;color:${p.category_color||'#C9A84C'}">${p.category_name}</span>` : '';
+  const tagHtml = (p.tags||[]).map(t=>`<span class="blog-tag">#${t.name}</span>`).join('');
+  const date = p.published_at ? new Date(p.published_at).toLocaleDateString(lang==='en'?'en-IN':lang==='hi'?'hi-IN':'bn-BD',{day:'numeric',month:'short',year:'numeric'}) : '';
+  return `
+  <div class="blog-card reveal">
+    <a href="/blog-post.html?slug=${p.slug}" style="text-decoration:none;color:inherit">${thumb}</a>
+    <div class="blog-body">
+      <div class="blog-meta">${catBadge}<span class="blog-date">${date}</span></div>
+      <a href="/blog-post.html?slug=${p.slug}" style="text-decoration:none"><h3 class="blog-title">${title}</h3></a>
+      <p class="blog-excerpt">${display}</p>
+      ${tagHtml?`<div class="blog-tags">${tagHtml}</div>`:''}
+      <div class="blog-footer">
+        <span class="blog-author">✍️ ${p.author_name||'SYDC Team'}</span>
+        <a href="/blog-post.html?slug=${p.slug}" class="btn btn-maroon btn-sm">Read More →</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function buildPagination(meta) {
+  const el = document.getElementById('blog-pagination');
+  if (meta.pages <= 1) { el.innerHTML=''; return; }
+  let html = '';
+  if (_currentPage > 1) html += `<button class="page-btn" onclick="loadPage(${_currentPage-1})">← Prev</button>`;
+  for (let i=1; i<=meta.pages; i++) {
+    if (i===1||i===meta.pages||Math.abs(i-_currentPage)<=1) {
+      html += `<button class="page-btn ${i===_currentPage?'active':''}" onclick="loadPage(${i})">${i}</button>`;
+    } else if (Math.abs(i-_currentPage)===2) html += '<span style="padding:8px 4px">…</span>';
+  }
+  if (_currentPage < meta.pages) html += `<button class="page-btn" onclick="loadPage(${_currentPage+1})">Next →</button>`;
+  el.innerHTML = html;
+}
+
+async function loadPage(page=1) {
+  _currentPage = page;
+  const grid = document.getElementById('blog-grid');
+  grid.innerHTML = '<div class="loading-block"><div class="spinner"></div></div>';
+  const q = document.getElementById('blog-search').value.trim();
+  const params = { page, ..._currentCat ? { category: _currentCat } : {} };
+  const res = await API.blogList(params);
+  if (!res.success || !res.data.length) {
+    grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);grid-column:1/-1;padding:40px">No posts found.</p>';
+    document.getElementById('blog-pagination').innerHTML = '';
+    return;
+  }
+  grid.innerHTML = res.data.map(buildBlogCard).join('');
+  buildPagination(res.meta);
+  initScrollReveal();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function loadCategories() {
+  const res = await API.blogCategories();
+  if (!res.success) return;
+  const chips = document.getElementById('cat-chips');
+  res.data.forEach(c => {
+    const span = document.createElement('span');
+    span.className = 'chip';
+    span.dataset.cat = c.slug;
+    span.textContent = c.name;
+    span.style.cssText = `border-color:${c.color};`;
+    chips.appendChild(span);
+  });
+  chips.addEventListener('click', e => {
+    const chip = e.target.closest('.chip');
+    if (!chip) return;
+    chips.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    _currentCat = chip.dataset.cat;
+    loadPage(1);
+  });
+}
+
+document.getElementById('blog-search').addEventListener('input', function() {
+  clearTimeout(_searchTimer);
+  _searchTimer = setTimeout(() => loadPage(1), 400);
+});
+
+document.addEventListener('langchange', () => loadPage(_currentPage));
+
+async function initPage() {
+  await Promise.all([loadCategories(), loadPage(1)]);
+  const sr = await API.settings();
+  const s = sr.data || {};
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+  if(s.logo_path){document.getElementById('nav-logo-img').src='/'+s.logo_path;document.getElementById('nav-logo-img').style.display='block';document.getElementById('nav-logo-fallback').style.display='none';}
+  if(s.founding_year) document.getElementById('footer-founding').textContent='Est. '+s.founding_year;
+  if(s.contact_email) document.getElementById('footer-email').textContent='✉ '+s.contact_email;
+  const lang=I18N.getLang();
+  const addr=s['contact_address_'+lang]||s.contact_address_en||'';
+  if(addr) document.getElementById('footer-address').textContent=addr;
+  const socials=[{key:'facebook_url',icon:'📘'},{key:'instagram_url',icon:'📸'},{key:'youtube_url',icon:'▶️'},{key:'whatsapp_link',icon:'💬'}];
+  const sc=document.getElementById('footer-social');
+  socials.forEach(({key,icon})=>{if(s[key])sc.innerHTML+=`<a href="${s[key]}" target="_blank">${icon}</a>`;});
+}
+
+document.addEventListener('DOMContentLoaded', initPage);
+</script>
+</body>
+</html>

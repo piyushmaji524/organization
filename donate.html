@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate — SYDC</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<div id="alert-banner"></div>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <div class="nav-logo-fallback" id="nav-logo-fallback">স</div>
+      <img id="nav-logo-img" class="nav-logo-img" src="" alt="Logo" style="display:none">
+      <div class="nav-brand-text"><div class="nav-name site-name">SYDC</div><div class="nav-sub site-tagline"></div></div>
+    </a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="/" data-i18n="nav_home">Home</a></li>
+      <li><a href="/about.html" data-i18n="nav_about">About</a></li>
+      <li><a href="/committee.html" data-i18n="nav_committee">Committee</a></li>
+      <li><a href="/events.html" data-i18n="nav_events">Events</a></li>
+      <li><a href="/news.html" data-i18n="nav_news">News</a></li>
+      <li><a href="/blog.html" data-i18n="nav_blog">Blog</a></li>
+      <li><a href="/gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+      <li><a href="/donate.html" class="active" data-i18n="nav_donate">Donate</a></li>
+      <li><a href="/contact.html" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hi">HI</button>
+        <button class="lang-btn" data-lang="bn">BN</button>
+      </div>
+      <a href="/join.html" class="btn nav-cta" data-i18n="nav_join">Join Us</a>
+    </div>
+    <button class="nav-hamburger" id="nav-toggle" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1 data-i18n="donate_title">Support Our Mission</h1>
+  <p>Your contribution empowers the Sarak community.</p>
+  <div class="breadcrumb"><a href="/" data-i18n="nav_home">Home</a> <span>/</span> <span data-i18n="nav_donate">Donate</span></div>
+</div>
+
+<section class="section donate-section">
+  <div class="container" style="max-width:860px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px" id="donate-grid">
+      <!-- Bank Details -->
+      <div class="donate-card reveal">
+        <h3>🏦 <span data-i18n="donate_bank_details">Bank Transfer Details</span></h3>
+        <div id="bank-details">
+          <div class="loading-block"><div class="spinner"></div></div>
+        </div>
+      </div>
+
+      <!-- UPI / QR -->
+      <div class="donate-card reveal" style="text-align:center">
+        <h3>📲 <span data-i18n="donate_upi">UPI Payment</span></h3>
+        <p style="color:rgba(255,255,255,.6);font-size:14px;margin-bottom:16px" data-i18n="donate_scan_qr">Scan & Pay</p>
+        <div id="qr-section"><div class="loading-block"><div class="spinner"></div></div></div>
+        <div id="upi-id-display" style="margin-top:16px;background:rgba(255,255,255,.08);padding:12px 20px;border-radius:8px;font-size:15px;color:var(--gold);letter-spacing:.5px;display:none"></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;color:rgba(255,255,255,.6)">
+      <p style="font-size:14px">After donating, please share the transaction screenshot on WhatsApp for confirmation.</p>
+      <div id="whatsapp-donate" style="margin-top:12px"></div>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <div class="container"><div class="footer-grid">
+    <div class="footer-brand"><p class="footer-founding" id="footer-founding"></p><div class="footer-social" id="footer-social"></div></div>
+    <div class="footer-col"><h4 data-i18n="footer_quicklinks">Quick Links</h4>
+      <a href="/" data-i18n="nav_home">Home</a><a href="/events.html" data-i18n="nav_events">Events</a>
+      <a href="/join.html" data-i18n="nav_join">Join</a><a href="/contact.html" data-i18n="nav_contact">Contact</a>
+    </div>
+    <div class="footer-col"><h4>More</h4>
+      <a href="/gallery.html" data-i18n="nav_gallery">Gallery</a><a href="/news.html" data-i18n="nav_news">News</a>
+    </div>
+    <div class="footer-col"><h4 data-i18n="footer_address">Contact</h4>
+      <p id="footer-address" style="font-size:14px;color:rgba(255,255,255,.5)"></p>
+      <p id="footer-email" style="font-size:14px;color:var(--gold);margin-top:6px"></p>
+    </div>
+  </div></div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="footer-year"></span> <span class="site-name">SYDC</span>. <span data-i18n="footer_rights">All Rights Reserved.</span></span>
+    <span><a href="#">Gunayatan</a></span>
+  </div>
+</footer>
+
+<div class="bottom-tab-bar"><div class="tabs">
+  <a href="/" class="bottom-tab"><span class="tab-icon">🏠</span><span data-i18n="nav_home">Home</span></a>
+  <a href="/events.html" class="bottom-tab"><span class="tab-icon">📅</span><span data-i18n="nav_events">Events</span></a>
+  <a href="/news.html" class="bottom-tab"><span class="tab-icon">📰</span><span data-i18n="nav_news">News</span></a>
+  <a href="/join.html" class="bottom-tab"><span class="tab-icon">✨</span><span data-i18n="nav_join">Join</span></a>
+  <a href="/contact.html" class="bottom-tab active"><span class="tab-icon">📞</span><span data-i18n="nav_contact">Contact</span></a>
+</div></div>
+
+<script src="/assets/js/api.js"></script>
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+async function loadDonate() {
+  const s = await getSettings();
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  if (s.logo_path) { document.getElementById('nav-logo-img').src='/'+s.logo_path; document.getElementById('nav-logo-img').style.display='block'; document.getElementById('nav-logo-fallback').style.display='none'; }
+  if (s.founding_year) document.getElementById('footer-founding').textContent = 'Est. ' + s.founding_year;
+  const lang = I18N.getLang();
+  if (s.contact_email) document.getElementById('footer-email').textContent = '✉ ' + s.contact_email;
+  const addr = s[`contact_address_${lang}`]||s.contact_address_en||''; if(addr) document.getElementById('footer-address').textContent=addr;
+
+  const sc=document.getElementById('footer-social');
+  [{key:'facebook_url',icon:'📘'},{key:'instagram_url',icon:'📸'},{key:'youtube_url',icon:'▶️'},{key:'whatsapp_link',icon:'💬'}].forEach(({key,icon})=>{if(s[key])sc.innerHTML+=`<a href="${s[key]}" target="_blank">${icon}</a>`;});
+
+  // Bank details
+  const bankEl = document.getElementById('bank-details');
+  const rows = [
+    [I18N.t('donate_bank_name'), s.donate_bank_name],
+    [I18N.t('donate_account'),   s.donate_account_no],
+    [I18N.t('donate_ifsc'),      s.donate_ifsc],
+  ];
+  bankEl.innerHTML = rows.filter(r=>r[1]).map(([k,v]) =>
+    `<div class="donate-row"><span class="donate-key">${k}</span><span class="donate-val">${v}</span></div>`
+  ).join('') || '<p style="color:rgba(255,255,255,.5);font-size:14px">Bank details not configured yet.</p>';
+
+  // QR code
+  const qrEl = document.getElementById('qr-section');
+  if (s.donate_qr_image) {
+    qrEl.innerHTML = `<img src="/${s.donate_qr_image}" alt="UPI QR Code" class="donate-qr" style="margin:0 auto">`;
+  } else {
+    qrEl.innerHTML = `<div class="qr-fallback" style="margin:0 auto">📱</div>`;
+  }
+  if (s.donate_upi) {
+    const upiEl = document.getElementById('upi-id-display');
+    upiEl.textContent = s.donate_upi;
+    upiEl.style.display = 'block';
+  }
+
+  // WhatsApp donate share
+  if (s.whatsapp_link) {
+    document.getElementById('whatsapp-donate').innerHTML =
+      `<a href="${s.whatsapp_link}" target="_blank" class="btn btn-primary">💬 Share on WhatsApp</a>`;
+  }
+
+  // Responsive grid
+  const grid = document.getElementById('donate-grid');
+  if (window.innerWidth < 600) grid.style.gridTemplateColumns = '1fr';
+}
+
+document.addEventListener('DOMContentLoaded', loadDonate);
+document.addEventListener('langchange', loadDonate);
+window.addEventListener('resize', () => {
+  const grid = document.getElementById('donate-grid');
+  if (grid) grid.style.gridTemplateColumns = window.innerWidth < 600 ? '1fr' : '1fr 1fr';
+});
+</script>
+</body>
+</html>
