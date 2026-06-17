@@ -1,0 +1,7 @@
+theme: jekyll-theme-minimal
+title: Sarak Youth Development Council
+description: Full-stack, trilingual website and admin panel
+show_downloads: true
+github:
+  is_project_page: true
+  repository_url: https://github.com/piyushmaji524/organization

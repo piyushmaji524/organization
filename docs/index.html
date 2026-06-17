@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sarak Youth Development Council - Full-stack trilingual website and admin panel">
+    <meta name="keywords" content="Youth, Organization, Community, Development, Website, PHP, MySQL">
+    <meta name="author" content="Sarak Youth Development Council">
+    <title>Sarak Youth Development Council</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #7B1C2E 0%, #1A0A0F 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #C9A84C;
+            margin-bottom: 50px;
+            font-weight: 500;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #C9A84C;
+            color: #1A0A0F;
+        }
+
+        .btn-primary:hover {
+            background: #d4b563;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(201, 168, 76, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #7B1C2E;
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #1A0A0F;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #7B1C2E;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            background: #f0ebe5;
+            padding: 80px 20px;
+        }
+
+        .tech-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .tech-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .tech-item h4 {
+            color: #7B1C2E;
+            margin-bottom: 8px;
+        }
+
+        .tech-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Security Section */
+        .security {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .security-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .security-text h2 {
+            font-size: 2rem;
+            color: #1A0A0F;
+            margin-bottom: 30px;
+        }
+
+        .security-list {
+            list-style: none;
+        }
+
+        .security-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .security-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #C9A84C;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .security-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #7B1C2E 0%, #1A0A0F 100%);
+            color: white;
+            padding: 80px 60px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 3rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #7B1C2E 0%, #1A0A0F 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: #1A0A0F;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #C9A84C;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .security-content {
+                grid-template-columns: 1fr;
+            }
+
+            .security-badge {
+                padding: 40px 20px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🌍 Sarak Youth Development Council</h1>
+            <p class="tagline">Empower Youth • Foster Community • Create Impact</p>
+            <p>A modern, secure, full-stack website and admin panel with multilingual support</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/piyushmaji524/organization" class="btn btn-primary">View on GitHub</a>
+                <a href="https://github.com/piyushmaji524/organization/blob/main/README.md" class="btn btn-secondary">Read Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">✨ Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Multilingual</h3>
+                <p>English, हिंदी, and বাংলা support for global reach</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Member Management</h3>
+                <p>Complete member directory and profile system</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Event Management</h3>
+                <p>Create events, track RSVPs, manage registrations</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🖼️</div>
+                <h3>Gallery Management</h3>
+                <p>Upload and organize image galleries with ease</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Admin Dashboard</h3>
+                <p>Powerful admin panel with 15+ pages</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Secure & Safe</h3>
+                <p>Enterprise-grade security with RBAC</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack">
+        <div class="max-width-section">
+            <h2 class="section-title">🛠️ Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="icon">🐘</div>
+                    <h4>PHP 8+</h4>
+                    <p>Modern PHP with PDO & prepared statements</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">🗄️</div>
+                    <h4>MySQL 8+</h4>
+                    <p>Robust relational database</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">📄</div>
+                    <h4>HTML5 & CSS3</h4>
+                    <p>Semantic markup and modern styling</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">⚡</div>
+                    <h4>Vanilla JavaScript</h4>
+                    <p>Fast, lightweight client-side scripting</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">📧</div>
+                    <h4>PHPMailer 6.x</h4>
+                    <p>Professional email notifications</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">📦</div>
+                    <h4>Composer</h4>
+                    <p>Dependency management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="security">
+        <div class="security-content">
+            <div class="security-text">
+                <h2>🔒 Security First</h2>
+                <ul class="security-list">
+                    <li>PDO Prepared Statements (SQL injection safe)</li>
+                    <li>bcrypt Password Hashing</li>
+                    <li>Role-Based Access Control (9 roles)</li>
+                    <li>Session Timeout (2 hours)</li>
+                    <li>File Upload Validation</li>
+                    <li>Environment Variables (.env)</li>
+                    <li>.htaccess Access Blocking</li>
+                    <li>Security Headers</li>
+                    <li>OWASP Compliance</li>
+                </ul>
+            </div>
+            <div class="security-badge">
+                🛡️<br>
+                Enterprise<br>
+                Grade<br>
+                Security
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Get Started?</h2>
+        <p>Deploy in 5 minutes with our comprehensive setup guide</p>
+        <div class="cta-buttons">
+            <a href="https://github.com/piyushmaji524/organization/blob/main/SETUP.md" class="btn btn-primary">View Setup Guide</a>
+            <a href="https://github.com/piyushmaji524/organization" class="btn btn-secondary">Clone Repository</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Sarak Youth Development Council</strong></p>
+        <p>A modern platform for community empowerment</p>
+        <div class="footer-links">
+            <a href="https://github.com/piyushmaji524/organization">GitHub</a>
+            <a href="https://github.com/piyushmaji524/organization/blob/main/README.md">Documentation</a>
+            <a href="https://github.com/piyushmaji524/organization/blob/main/SECURITY.md">Security</a>
+            <a href="https://github.com/piyushmaji524/organization/blob/main/LICENSE">License</a>
+        </div>
+        <p>&copy; 2024-2026 Sarak Youth Development Council. All rights reserved.</p>
+    </footer>
+</body>
+</html>
